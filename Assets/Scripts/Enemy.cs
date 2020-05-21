@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
   void Update()
   {
-    //This gives us direction pointing towards target. TARGET - YOUR POSITION will give proper heading.
+    //This gives us direction pointing towards target. TARGET.position - YOUR POSITION will give proper heading.
     Vector3 dir = target.position - transform.position;
 
     //Normalizing the vector changes it's maginitude to 1, allowing us to control the speed of the object without changing its direction.
