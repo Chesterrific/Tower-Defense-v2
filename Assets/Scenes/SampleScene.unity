@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -3164,7 +3164,7 @@ BoxCollider:
   m_GameObject: {fileID: 429965239}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4488,7 +4488,7 @@ BoxCollider:
   m_GameObject: {fileID: 595995803}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5812,7 +5812,7 @@ BoxCollider:
   m_GameObject: {fileID: 734376063}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -6856,12 +6856,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857828380}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &864158415 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3773106225433818054, guid: 7d8b09b00bec81340a2f3d64d7f15a31,
-    type: 3}
-  m_PrefabInstance: {fileID: 1364115094}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &892327384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7040,7 +7034,7 @@ BoxCollider:
   m_GameObject: {fileID: 895864061}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -8428,7 +8422,7 @@ BoxCollider:
   m_GameObject: {fileID: 1078972789}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -10190,7 +10184,7 @@ BoxCollider:
   m_GameObject: {fileID: 1363766934}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -10303,11 +10297,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8369904434515971499, guid: 7d8b09b00bec81340a2f3d64d7f15a31,
-        type: 3}
-      propertyPath: partToRotate
-      value: 
-      objectReference: {fileID: 864158415}
     - target: {fileID: 8536916525438186428, guid: 7d8b09b00bec81340a2f3d64d7f15a31,
         type: 3}
       propertyPath: m_Name
@@ -11098,7 +11087,7 @@ BoxCollider:
   m_GameObject: {fileID: 1469086409}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -11866,7 +11855,7 @@ BoxCollider:
   m_GameObject: {fileID: 1515503261}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -13882,7 +13871,7 @@ BoxCollider:
   m_GameObject: {fileID: 1814067963}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -13975,7 +13964,7 @@ BoxCollider:
   m_GameObject: {fileID: 1821331477}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -14218,7 +14207,7 @@ BoxCollider:
   m_GameObject: {fileID: 1826295738}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -15436,7 +15425,7 @@ BoxCollider:
   m_GameObject: {fileID: 1921736953}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -16897,7 +16886,7 @@ BoxCollider:
   m_GameObject: {fileID: 2048052024}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -17290,7 +17279,7 @@ BoxCollider:
   m_GameObject: {fileID: 2100653620}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
