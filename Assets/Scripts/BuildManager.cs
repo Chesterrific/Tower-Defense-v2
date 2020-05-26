@@ -18,16 +18,16 @@ public class BuildManager : MonoBehaviour
 
   [Header("Build Manager Options")]
   public GameObject standardTurretPrefab;
+  public GameObject missleTurretPrefab;
 
   private GameObject turretToBuild;
 
-  private void Start()
+  public void SetTurretToBuild(GameObject turret)
   {
-    //Temporarily set turretToBuild to our standard turret, it's our only one atm.
-    turretToBuild = standardTurretPrefab;
+    turretToBuild = turret;
   }
 
-  public GameObject getTurretToBuild()
+  public GameObject GetTurretToBuild()
   {
     return turretToBuild;
   }
