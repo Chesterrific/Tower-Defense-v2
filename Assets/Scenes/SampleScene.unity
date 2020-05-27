@@ -10032,6 +10032,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2867747125326526231, guid: 89e712ef6324f804495547ee66fca8bf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d1112a166e263254898a8466e88804a8,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89e712ef6324f804495547ee66fca8bf, type: 3}
 --- !u!224 &1280989545 stripped
@@ -12548,7 +12554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 8536916525438186428, guid: 7d8b09b00bec81340a2f3d64d7f15a31,
     type: 3}
-  missleTurretPrefab: {fileID: 8536916525438186428, guid: 7d8b09b00bec81340a2f3d64d7f15a31,
+  missleTurretPrefab: {fileID: 6723578733082182589, guid: 04d0255fed27ae6499d381a42790df10,
     type: 3}
 --- !u!224 &1590028491 stripped
 RectTransform:
@@ -18308,6 +18314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867747125326526229, guid: 89e712ef6324f804495547ee66fca8bf,
+        type: 3}
+      propertyPath: m_PreferredWidth
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89e712ef6324f804495547ee66fca8bf, type: 3}
