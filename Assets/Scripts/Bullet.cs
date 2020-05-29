@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
   [Header("Bullet Characteristics")]
   public float bulletSpeed = 70f;
   public float explosionRadius = 0f;
+  public int bulletDamage = 1;
   public GameObject impactEffect;
 
   public void Seek(Transform _target)
@@ -59,7 +60,12 @@ public class Bullet : MonoBehaviour
 
   void Damage(Transform enemy)
   {
-    Destroy(enemy.gameObject);
+    Enemy e = enemy.GetComponent<Enemy>();
+
+    if (e != null)
+    {
+      e.TakeDamage(bulletDamage);
+    }
   }
 
   void Explode()
@@ -68,7 +74,8 @@ public class Bullet : MonoBehaviour
     Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
     foreach (Collider collider in colliders)
     {
-      if(collider.tag == "Enemy"){
+      if (collider.tag == "Enemy")
+      {
         Damage(collider.transform);
       }
     }

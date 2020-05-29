@@ -25,7 +25,7 @@ public class BuildManager : MonoBehaviour
 
   //These are "properties", these variable can never be set manually. It is equvialent to writing a small function to check for true or false!
   public bool CanBuild { get { return turretToBuild != null; } }
-  public bool HasMoney { get { return PlayerStats.money >= turretToBuild.cost; } }
+  public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
 
   public void SelectTurretToBuild(TurretBlueprint turret)
   {
@@ -36,14 +36,14 @@ public class BuildManager : MonoBehaviour
   //Store built turret into given node's own turret vairable.
   public void BuildTurretOn(Node node)
   {
-    if (PlayerStats.money < turretToBuild.cost)
+    if (PlayerStats.Money < turretToBuild.cost)
     {
       Debug.Log("Not enough $$");
       return;
     }
 
-    PlayerStats.money -= turretToBuild.cost;
-    Debug.Log("Turret built, money left: " + PlayerStats.money);
+    PlayerStats.Money -= turretToBuild.cost;
+    Debug.Log("Turret built, Money left: " + PlayerStats.Money);
 
     GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
     node.turret = turret;

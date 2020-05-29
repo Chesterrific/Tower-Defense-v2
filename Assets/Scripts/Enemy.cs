@@ -2,7 +2,11 @@
 
 public class Enemy : MonoBehaviour
 {
+  [Header("Enemy Characteristics")]
   public float speed = 10f;
+  public int health = 10;
+  public int value = 50;
+  public GameObject deathEffect;
 
   private Transform target;
   private int wavepointIndex = 0;
@@ -33,10 +37,33 @@ public class Enemy : MonoBehaviour
     //If no next wavepoint, destroy object.
     if (wavepointIndex >= Waypoints.points.Length - 1)
     {
-      Destroy(gameObject);
+      EndPath();
       return;
     }
     wavepointIndex++;
     target = Waypoints.points[wavepointIndex];
+  }
+
+  void EndPath()
+  {
+    Destroy(gameObject);
+    PlayerStats.Lives--;
+    return;
+  }
+
+  public void TakeDamage(int damage)
+  {
+    health -= damage;
+    if (health <= 0){
+      Die();
+    }
+  }
+
+  void Die(){
+    PlayerStats.Money += value;
+    GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
+
+    Destroy(effect, 5f);
+    Destroy(gameObject);
   }
 }
