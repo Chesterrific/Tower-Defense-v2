@@ -8,10 +8,13 @@ public class Node : MonoBehaviour
 
   [Header("Node Options")]
   public Color hoverColor;
+  public Color alarmColor;
   public Vector3 positionOffset;
 
+  [Header("Optional")]
+  public GameObject turret;
+
   /*Private Variables*/
-  private GameObject turret;
   private Renderer rend;
   private Color originalColor;
 
@@ -25,6 +28,11 @@ public class Node : MonoBehaviour
     buildManager = BuildManager.instance;
   }
 
+  public Vector3 GetBuildPosition()
+  {
+    return transform.position + positionOffset;
+  }
+
   void OnMouseEnter()
   {
     //Built in Unity function that checks if our mouse is over a game object like U.I.
@@ -33,15 +41,22 @@ public class Node : MonoBehaviour
       return;
     }
 
-    if (buildManager.GetTurretToBuild() == null)
+    if (!buildManager.CanBuild)
     {
       return;
     }
 
+    if (buildManager.HasMoney)
+    {
+      rend.material.color = hoverColor;
+    }
+    else
+    {
+      rend.material.color = alarmColor;
+    }
     //We grab this object's renderer component "Mesh Renderer" to grab its material to change here.
-    rend.material.color = hoverColor;
-  }
 
+  }
   void OnMouseExit()
   {
     rend.material.color = originalColor;
@@ -54,7 +69,7 @@ public class Node : MonoBehaviour
       return;
     }
 
-    if (buildManager.GetTurretToBuild() == null)
+    if (!buildManager.CanBuild)
     {
       return;
     }
@@ -67,8 +82,7 @@ public class Node : MonoBehaviour
     }
 
     //Build turret.
-    GameObject turretToBuild = buildManager.GetTurretToBuild();
-    turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+    buildManager.BuildTurretOn(this);
 
   }
 }

@@ -16,19 +16,39 @@ public class BuildManager : MonoBehaviour
     instance = this;
   }
 
+
+
   [Header("Build Manager Options")]
-  public GameObject standardTurretPrefab;
-  public GameObject missleTurretPrefab;
+  public GameObject buildEffect;
 
-  private GameObject turretToBuild;
+  private TurretBlueprint turretToBuild;
 
-  public void SetTurretToBuild(GameObject turret)
+  //These are "properties", these variable can never be set manually. It is equvialent to writing a small function to check for true or false!
+  public bool CanBuild { get { return turretToBuild != null; } }
+  public bool HasMoney { get { return PlayerStats.money >= turretToBuild.cost; } }
+
+  public void SelectTurretToBuild(TurretBlueprint turret)
   {
     turretToBuild = turret;
   }
 
-  public GameObject GetTurretToBuild()
+  //Instantiate turret on given node, with a given position, with no rotation (Quaternion.identity = no rotation).
+  //Store built turret into given node's own turret vairable.
+  public void BuildTurretOn(Node node)
   {
-    return turretToBuild;
+    if (PlayerStats.money < turretToBuild.cost)
+    {
+      Debug.Log("Not enough $$");
+      return;
+    }
+
+    PlayerStats.money -= turretToBuild.cost;
+    Debug.Log("Turret built, money left: " + PlayerStats.money);
+
+    GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+    node.turret = turret;
+
+    GameObject effect = (GameObject)Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
+    Destroy(effect, 5f);
   }
 }

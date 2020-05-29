@@ -8,7 +8,7 @@ public class WaveSpawner : MonoBehaviour
   public Transform spawnPoint;
   public Text waveCountDownText;
 
-  public float timeBetweenWaves = 5f;
+  public float timeBetweenWaves = 20f;
   private float countdown = 2f;
   private int waveIndex = 0;
 
@@ -23,8 +23,9 @@ public class WaveSpawner : MonoBehaviour
     //Time.deltatime is the time since drawing the last frame, i.e. 1 second if game runs at 60fps.
     countdown -= Time.deltaTime;
 
-    //Change text in our UI element into our "countdown" variable timer. Round the "countdown" into integers which we then stringfy to pass as string.
-    waveCountDownText.text = Mathf.Round(countdown).ToString();
+    countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+
+    waveCountDownText.text = string.Format("{0:00.00}", countdown);
   }
 
   //Coroutine, can be paused by yield command. Needs System.collections namespace.
