@@ -16,7 +16,7 @@ public class BuildManager : MonoBehaviour
     instance = this;
   }
 
-
+/*------------------------------------------------------------------------------------------------------*/
 
   [Header("Build Manager Options")]
   public GameObject buildEffect;

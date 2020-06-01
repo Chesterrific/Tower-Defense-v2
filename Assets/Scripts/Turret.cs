@@ -7,11 +7,18 @@ public class Turret : MonoBehaviour
 
   private Transform target;
 
-  [Header("Attributes")]
+  [Header("General")]
   public float range = 15f;
+
+
+  [Header("Use Bullets")]
   public float turnSpeed = 10f;
   public float fireRate = 1f;
   private float fireCountDown = 0.5f;
+
+  [Header("Use Laser")]
+  public bool useLaser = false;
+  public LineRenderer lineRenderer;
 
   [Header("Unity Setup Fields")]
   public Transform partToRotate;
@@ -61,10 +68,38 @@ public class Turret : MonoBehaviour
   {
     if (target == null)
     {
+      if (useLaser)
+      {
+        if (lineRenderer.enabled)
+        {
+          lineRenderer.enabled = false;
+        }
+      }
       return;
     }
 
-    /*-------------------------Target Lock on-------------------------*/
+    LockOnTarget();
+
+    if (useLaser)
+    {
+      /*-------------------------Laser-------------------------*/
+      Laser();
+    }
+    else
+    {
+      /*-------------------------Shooting-------------------------*/
+      if (fireCountDown <= 0f)
+      {
+        Shoot();
+        fireCountDown = 1f / fireRate;
+      }
+
+      fireCountDown -= Time.deltaTime;
+    }
+  }
+
+  void LockOnTarget()
+  {
     Vector3 dir = target.position - transform.position;
 
     //Quaternion deals with rotation, with this line we're taking our direction and giving ourselves a rotation variable to use to look that way.
@@ -77,15 +112,6 @@ public class Turret : MonoBehaviour
     //Since we only want to rotate along one axis, we set other rotations to 0 and take only the y component of our rotation variable.
     //Ex. if we wanted to also rotate up and down, we would take the z component of our rotation variable.
     partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-    /*-------------------------Shooting-------------------------*/
-    if (fireCountDown <= 0f)
-    {
-      Shoot();
-      fireCountDown = 1f / fireRate;
-    }
-
-    fireCountDown -= Time.deltaTime;
   }
 
   void Shoot()
@@ -102,6 +128,15 @@ public class Turret : MonoBehaviour
       //Will pass on turret's target to the bullet.
       bullet.Seek(target);
     }
+  }
+
+  void Laser()
+  {
+    if(!lineRenderer.enabled){
+      lineRenderer.enabled = true;
+    }
+    lineRenderer.SetPosition(0, firePoint.position);
+    lineRenderer.SetPosition(1, target.position);
   }
 
   //Draws turret range for us in scene view.
