@@ -6,6 +6,7 @@ public class Turret : MonoBehaviour
 {
 
   private Transform target;
+  private Enemy targetEnemy;
 
   [Header("General")]
   public float range = 15f;
@@ -18,6 +19,8 @@ public class Turret : MonoBehaviour
 
   [Header("Use Laser")]
   public bool useLaser = false;
+  public int damageOverTime = 30;
+  public float slowPct = .5f;
   public LineRenderer lineRenderer;
   public ParticleSystem impactEffect;
   public Light impactLight;
@@ -57,6 +60,7 @@ public class Turret : MonoBehaviour
     if (nearestEnemy != null && shortestDistance <= range)
     {
       target = nearestEnemy.transform;
+      targetEnemy = nearestEnemy.GetComponent<Enemy>();
     }
     else
     {
@@ -136,7 +140,12 @@ public class Turret : MonoBehaviour
 
   void Laser()
   {
-    if(!lineRenderer.enabled){
+    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+    targetEnemy.Slow(slowPct);
+
+    //Enable or disable lineRenderer component as well as play our animations.
+    if (!lineRenderer.enabled)
+    {
       lineRenderer.enabled = true;
       impactLight.enabled = true;
       impactEffect.Play();
@@ -149,7 +158,7 @@ public class Turret : MonoBehaviour
 
     //Sets impact effect to point back towards turret.
     Vector3 dir = firePoint.position - target.position;
-    
+
     impactEffect.transform.position = target.position + dir.normalized;
     impactEffect.transform.rotation = Quaternion.LookRotation(dir);
 

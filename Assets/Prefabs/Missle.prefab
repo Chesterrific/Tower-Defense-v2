@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 30
   explosionRadius: 8
-  bulletDamage: 5
+  bulletDamage: 70
   impactEffect: {fileID: 474525401839910711, guid: 0529e49f7496c25458a7d03432f07ef9,
     type: 3}
 --- !u!1 &8721694617968801117
