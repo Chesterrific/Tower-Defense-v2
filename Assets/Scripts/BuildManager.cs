@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour
 {
@@ -16,12 +17,14 @@ public class BuildManager : MonoBehaviour
     instance = this;
   }
 
-/*------------------------------------------------------------------------------------------------------*/
+  /*------------------------------------------------------------------------------------------------------*/
 
   [Header("Build Manager Options")]
   public GameObject buildEffect;
+  public NodeUI nodeUI;
 
   private TurretBlueprint turretToBuild;
+  private Node selectedNode;
 
   //These are "properties", these variable can never be set manually. It is equvialent to writing a small function to check for true or false!
   public bool CanBuild { get { return turretToBuild != null; } }
@@ -30,6 +33,27 @@ public class BuildManager : MonoBehaviour
   public void SelectTurretToBuild(TurretBlueprint turret)
   {
     turretToBuild = turret;
+    DeselectNode();
+  }
+
+  public void SelectNode(Node node)
+  {
+    if (selectedNode == node)
+    {
+      DeselectNode();
+      return;
+    }
+
+    selectedNode = node;
+    turretToBuild = null;
+
+    nodeUI.SetTarget(node);
+  }
+
+  public void DeselectNode()
+  {
+    selectedNode = null;
+    nodeUI.Hide();
   }
 
   //Instantiate turret on given node, with a given position, with no rotation (Quaternion.identity = no rotation).

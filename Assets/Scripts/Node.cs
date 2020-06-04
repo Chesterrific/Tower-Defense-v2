@@ -69,15 +69,15 @@ public class Node : MonoBehaviour
       return;
     }
 
-    if (!buildManager.CanBuild)
-    {
-      return;
-    }
-
     //If turret is already in place.
     if (turret != null)
     {
-      Debug.Log("Turret already in place.");
+      buildManager.SelectNode(this);
+      return;
+    }
+
+    if (!buildManager.CanBuild)
+    {
       return;
     }
 
