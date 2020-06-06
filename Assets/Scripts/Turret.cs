@@ -15,6 +15,7 @@ public class Turret : MonoBehaviour
   [Header("Use Bullets")]
   public float turnSpeed = 10f;
   public float fireRate = 1f;
+  public GameObject bulletPrefab;
   private float fireCountDown = 0.5f;
 
   [Header("Use Laser")]
@@ -28,7 +29,6 @@ public class Turret : MonoBehaviour
   [Header("Unity Setup Fields")]
   public Transform partToRotate;
   public string enemyTag = "Enemy"; //What our turret will target.
-  public GameObject bulletPrefab;
   public Transform firePoint;
 
   // Start is called before the first frame update

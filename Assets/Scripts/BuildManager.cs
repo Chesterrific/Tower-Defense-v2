@@ -56,23 +56,7 @@ public class BuildManager : MonoBehaviour
     nodeUI.Hide();
   }
 
-  //Instantiate turret on given node, with a given position, with no rotation (Quaternion.identity = no rotation).
-  //Store built turret into given node's own turret vairable.
-  public void BuildTurretOn(Node node)
-  {
-    if (PlayerStats.Money < turretToBuild.cost)
-    {
-      Debug.Log("Not enough $$");
-      return;
-    }
-
-    PlayerStats.Money -= turretToBuild.cost;
-    Debug.Log("Turret built, Money left: " + PlayerStats.Money);
-
-    GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-    node.turret = turret;
-
-    GameObject effect = (GameObject)Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-    Destroy(effect, 5f);
+  public TurretBlueprint GetTurretToBuild(){
+    return turretToBuild;
   }
 }
