@@ -486,23 +486,25 @@ MonoBehaviour:
     upgradePrefab: {fileID: 6985483439212300166, guid: 41bee39832393434d8882f74adc7904e,
       type: 3}
     upgradeCost: 60
-    upgradeSellCost: 0
+    upgradeSellCost: 80
   missleTurret:
     prefab: {fileID: 6723578733082182589, guid: 04d0255fed27ae6499d381a42790df10,
       type: 3}
     cost: 250
     sellCost: 125
-    upgradePrefab: {fileID: 0}
-    upgradeCost: 165
-    upgradeSellCost: 0
+    upgradePrefab: {fileID: 67080323371172699, guid: 54f62d725b4427841a09d75f93f50498,
+      type: 3}
+    upgradeCost: 160
+    upgradeSellCost: 205
   laserTurret:
     prefab: {fileID: 4161653997014605356, guid: da2add8afe213fc41b83c6b2a5d895f4,
       type: 3}
     cost: 350
     sellCost: 175
-    upgradePrefab: {fileID: 0}
+    upgradePrefab: {fileID: 3797585310285531335, guid: 8660049cea222fe4da25e2e2b12ed95f,
+      type: 3}
     upgradeCost: 290
-    upgradeSellCost: 0
+    upgradeSellCost: 320
 --- !u!1001 &80275320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8851,7 +8853,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 900241217}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 732863257}
+        m_MethodName: Sell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &900241217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14779,6 +14792,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 5800258382477762455, guid: 3d29320dcb023c34d822c0db358d3555,
+    type: 3}
+  sellEffect: {fileID: 2290609344166396625, guid: c3b152c27cf988247afaa0c455b520a3,
     type: 3}
   nodeUI: {fileID: 732863257}
 --- !u!114 &1582708794

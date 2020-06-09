@@ -126,7 +126,7 @@ public class Node : MonoBehaviour
 
     PlayerStats.Money -= turretBlueprint.upgradeCost;
     Debug.Log("Turret built, Money left: " + PlayerStats.Money);
-    
+
     //Destroy old turret game object to make space for upgrade.
     Destroy(turret);
 
@@ -137,5 +137,25 @@ public class Node : MonoBehaviour
     Destroy(effect, 5f);
 
     isUpgraded = true;
+  }
+
+  public void SellTurret()
+  {
+    Destroy(turret);
+
+    if (!isUpgraded)
+    {
+      PlayerStats.Money += turretBlueprint.sellCost;
+    }
+    else
+    {
+      PlayerStats.Money += turretBlueprint.upgradeSellCost;
+    }
+
+    GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+    Destroy(effect, 5f);
+
+    isUpgraded = false;
+    turret = null;
   }
 }

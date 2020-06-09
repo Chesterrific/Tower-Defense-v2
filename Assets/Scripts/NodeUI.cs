@@ -25,7 +25,7 @@ public class NodeUI : MonoBehaviour
     {
       upgradeText.text = "MAX LVL";
       upgradeButton.interactable = false;
-      
+
       sellText.text = "SELL\n$" + target.turretBlueprint.upgradeSellCost;
     }
   }
@@ -54,6 +54,12 @@ public class NodeUI : MonoBehaviour
       return;
     }
     target.UpgradeTurret();
+    BuildManager.instance.DeselectNode();
+  }
+
+  public void Sell()
+  {
+    target.SellTurret();
     BuildManager.instance.DeselectNode();
   }
 }

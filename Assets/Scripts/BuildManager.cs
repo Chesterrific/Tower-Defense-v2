@@ -21,6 +21,7 @@ public class BuildManager : MonoBehaviour
 
   [Header("Build Manager Options")]
   public GameObject buildEffect;
+  public GameObject sellEffect;
   public NodeUI nodeUI;
 
   private TurretBlueprint turretToBuild;
