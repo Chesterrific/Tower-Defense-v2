@@ -109,7 +109,7 @@ public class Node : MonoBehaviour
     //Store the turret into this node.
     turret = t;
 
-    //Samething as abovem store turretToBuild blueprint onto node.
+    //Samething as above, store turretToBuild blueprint onto node.
     turretBlueprint = turretToBuild;
 
     GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
@@ -157,5 +157,6 @@ public class Node : MonoBehaviour
 
     isUpgraded = false;
     turret = null;
+    turretBlueprint = null;
   }
 }
