@@ -4,7 +4,9 @@ using System.Collections;
 
 public class WaveSpawner : MonoBehaviour
 {
-  public Transform enemyPrefab;
+  public static int EnemiesAlive = 0;
+
+  public Wave[] waves;
   public Transform spawnPoint;
   public Text waveCountDownText;
 
@@ -14,11 +16,16 @@ public class WaveSpawner : MonoBehaviour
 
   private void Update()
   {
+    if (EnemiesAlive > 0)
+    {
+      return;
+    }
     if (countdown <= 0f)
     {
       //Coroutines are called using this command.
       StartCoroutine(SpawnWave());
       countdown = timeBetweenWaves;
+      return;
     }
     //Time.deltatime is the time since drawing the last frame, i.e. 1 second if game runs at 60fps.
     countdown -= Time.deltaTime;
@@ -31,19 +38,28 @@ public class WaveSpawner : MonoBehaviour
   //Coroutine, can be paused by yield command. Needs System.collections namespace.
   IEnumerator SpawnWave()
   {
-    waveIndex++;
     PlayerStats.Rounds++;
 
-    for (int i = 0; i < waveIndex; i++)
+    Wave wave = waves[waveIndex];
+
+    for (int i = 0; i < wave.count; i++)
     {
-      SpawnEnemy();
-      yield return new WaitForSeconds(0.5f);
+      SpawnEnemy(wave.enemy);
+      yield return new WaitForSeconds(1f / wave.rate);
+    }
+    waveIndex++;
+
+    if (waveIndex == waves.Length)
+    {
+      Debug.Log("Level 1 complete");
+      this.enabled = false;
     }
   }
 
-  void SpawnEnemy()
+  void SpawnEnemy(GameObject enemy)
   {
     //creates object into game requires object, position (Vector3), and rotation.
-    Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+    Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+    EnemiesAlive++;
   }
 }
