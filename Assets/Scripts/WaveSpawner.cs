@@ -14,8 +14,12 @@ public class WaveSpawner : MonoBehaviour
   private float countdown = 2f;
   private int waveIndex = 0;
 
+  private void Start() {
+    EnemiesAlive = 0;
+  }
+
   private void Update()
-  {
+  { 
     if (EnemiesAlive > 0)
     {
       return;
@@ -51,7 +55,7 @@ public class WaveSpawner : MonoBehaviour
 
     if (waveIndex == waves.Length)
     {
-      Debug.Log("Level 1 complete");
+      Debug.Log("Level complete");
       this.enabled = false;
     }
   }
@@ -61,5 +65,9 @@ public class WaveSpawner : MonoBehaviour
     //creates object into game requires object, position (Vector3), and rotation.
     Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
     EnemiesAlive++;
+  }
+
+  public void ResetGame(){
+    EnemiesAlive = 0;
   }
 }

@@ -15606,6 +15606,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 458353642}
   menuSceneName: MainMenu
   sceneFader: {fileID: 477861077}
+  waveSpawner: {fileID: 1582708791}
 --- !u!224 &1590028491 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2867747125326526226, guid: 89e712ef6324f804495547ee66fca8bf,
