@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
   [HideInInspector]
   public float speed;
   private float health;
+  private bool isDead = false;
 
   private void Start() {
     health = starthealth;
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     healthBar.fillAmount = health / starthealth;
 
-    if (health <= 0){
+    if (health <= 0 && !isDead){
       Die();
     }
   }
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour
   }
 
   void Die(){
+    isDead = true;
     PlayerStats.Money += value;
 
     GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
