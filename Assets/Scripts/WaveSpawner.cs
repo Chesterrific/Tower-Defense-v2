@@ -9,20 +9,29 @@ public class WaveSpawner : MonoBehaviour
   public Wave[] waves;
   public Transform spawnPoint;
   public Text waveCountDownText;
+  public GameManager gameManager;
 
   public float timeBetweenWaves = 20f;
   private float countdown = 2f;
   private int waveIndex = 0;
 
-  private void Start() {
+  private void Start()
+  {
     EnemiesAlive = 0;
+    Debug.Log(waves.Length);
   }
 
   private void Update()
-  { 
+  {
     if (EnemiesAlive > 0)
     {
       return;
+    }
+    if (EnemiesAlive == 0 && waveIndex == waves.Length)
+    {
+      Debug.Log("Level complete");
+      gameManager.WinLevel();
+      this.enabled = false;
     }
     if (countdown <= 0f)
     {
@@ -46,28 +55,34 @@ public class WaveSpawner : MonoBehaviour
 
     Wave wave = waves[waveIndex];
 
+    EnemiesAlive = wave.count;
+
     for (int i = 0; i < wave.count; i++)
     {
       SpawnEnemy(wave.enemy);
+
+      //Note that yield return is just for waiting, yield break exits the coroutine.
       yield return new WaitForSeconds(1f / wave.rate);
     }
     waveIndex++;
-
-    if (waveIndex == waves.Length)
-    {
-      Debug.Log("Level complete");
-      this.enabled = false;
-    }
+    /*
+        if (waveIndex == waves.Length)
+        {
+          Debug.Log("Level complete");
+          gameManager.WinLevel();
+          this.enabled = false;
+        }
+    */
   }
 
   void SpawnEnemy(GameObject enemy)
   {
     //creates object into game requires object, position (Vector3), and rotation.
     Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-    EnemiesAlive++;
   }
 
-  public void ResetGame(){
+  public void ResetGame()
+  {
     EnemiesAlive = 0;
   }
 }

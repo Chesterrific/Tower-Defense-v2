@@ -15518,20 +15518,9 @@ MonoBehaviour:
   - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
     count: 1
     rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 2
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 5
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 4f7e614657b5f384192cab7920f677d7, type: 3}
-    count: 3
-    rate: 1
-  - enemy: {fileID: 6442220969751332713, guid: e1afa2b6abc9d2746bd0763cabd22468, type: 3}
-    count: 10
-    rate: 3
   spawnPoint: {fileID: 598042479}
   waveCountDownText: {fileID: 1605517500}
+  gameManager: {fileID: 1582708795}
   timeBetweenWaves: 5
 --- !u!4 &1582708792
 Transform:
@@ -15591,6 +15580,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 947810335}
+  nextLevel: Level02
+  levelToUnlock: 2
+  sceneFader: {fileID: 477861077}
 --- !u!114 &1582708796
 MonoBehaviour:
   m_ObjectHideFlags: 0
