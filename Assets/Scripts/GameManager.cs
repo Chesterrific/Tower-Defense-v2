@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     {
       EndGame();
     }
+    if (Input.GetKeyDown(KeyCode.F2))
+    {
+      WinLevel();
+    }
   }
 
   private void EndGame()

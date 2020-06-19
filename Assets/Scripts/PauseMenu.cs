@@ -6,7 +6,6 @@ public class PauseMenu : MonoBehaviour
   public GameObject pauseMenu;
   public string menuSceneName = "MainMenu";
   public SceneFader sceneFader;
-  public WaveSpawner waveSpawner;
 
   // Update is called once per frame
   void Update()
