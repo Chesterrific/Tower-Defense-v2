@@ -7,6 +7,8 @@ public class SceneFader : MonoBehaviour
 {
 
   public Image img;
+  public GameObject startLevelScreen = null;
+  private Animator animator = null;
 
   //Animation curve to control fade
   public AnimationCurve curve;
@@ -16,13 +18,24 @@ public class SceneFader : MonoBehaviour
     StartCoroutine(FadeIn());
   }
 
+  private void Update()
+  {
+    if (startLevelScreen == null || !startLevelScreen.activeSelf || animator == null)
+    {
+      return;
+    }
+    if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && animator.GetCurrentAnimatorStateInfo(0).IsName("StartLevelScreen"))
+    {
+      startLevelScreen.SetActive(false);
+    }
+  }
+
   public void FadeTo(string scene)
   {
     StartCoroutine(FadeOut(scene));
-    
   }
 
-  //Fade Scene in.
+  //Fade Scene in. Fades out this element.
   IEnumerator FadeIn()
   {
     float t = 1f;
@@ -40,6 +53,14 @@ public class SceneFader : MonoBehaviour
       //Wait until the next frame and repeat this while loop.
       yield return 0;
     }
+
+    if (startLevelScreen == null)
+    {
+      yield break;
+    }
+
+    startLevelScreen.SetActive(true);
+    animator = startLevelScreen.GetComponent<Animator>();
   }
 
   //Fade Scene out.
