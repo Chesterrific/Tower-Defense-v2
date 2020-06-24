@@ -24,6 +24,7 @@ public class SceneFader : MonoBehaviour
     {
       return;
     }
+    //If the animation has gone through at least once and the animation is called "StartLevelScreen"
     if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && animator.GetCurrentAnimatorStateInfo(0).IsName("StartLevelScreen"))
     {
       startLevelScreen.SetActive(false);
@@ -35,7 +36,7 @@ public class SceneFader : MonoBehaviour
     StartCoroutine(FadeOut(scene));
   }
 
-  //Fade Scene in. Fades out this element.
+  //Fade Scene in. Fades out the black screen.
   IEnumerator FadeIn()
   {
     float t = 1f;
@@ -63,7 +64,7 @@ public class SceneFader : MonoBehaviour
     animator = startLevelScreen.GetComponent<Animator>();
   }
 
-  //Fade Scene out.
+  //Fade Scene out. Fades in the black screen.
   IEnumerator FadeOut(string scene)
   {
     float t = 0f;
