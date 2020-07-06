@@ -6,7 +6,7 @@ public class WaveSpawner : MonoBehaviour
 {
   public static int EnemiesAlive = 0;
 
-  public Wave[] waves;
+  public WaveWrap[] waves;
   public Transform spawnPoint;
   public Text waveCountDownText;
   public GameManager gameManager;
@@ -52,22 +52,21 @@ public class WaveSpawner : MonoBehaviour
   {
     PlayerStats.Rounds++;
 
-    Wave wave = waves[waveIndex];
+    Wave[] currentWave = waves[waveIndex].individualWaves;
 
-    EnemiesAlive = wave.count;
+    for(int i = 0; i < currentWave.Length; i++){
+      for(int j = 0; j < currentWave[i].count; j++){
+        SpawnEnemy(currentWave[i].enemy);
 
-    for (int i = 0; i < wave.count; i++)
-    {
-      SpawnEnemy(wave.enemy);
-
-      //Note that yield return is just for waiting, yield break exits the coroutine.
-      yield return new WaitForSeconds(1f / wave.rate);
+        yield return new WaitForSeconds(1f/ currentWave[i].rate);
+      }
     }
     waveIndex++;
   }
 
   void SpawnEnemy(GameObject enemy)
   {
+    EnemiesAlive++;
     //creates object into game requires object, position (Vector3), and rotation.
     Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
   }

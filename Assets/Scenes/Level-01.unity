@@ -16475,36 +16475,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 5
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
-  - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46, type: 3}
-    count: 1
-    rate: 2
+  - individualWaves:
+    - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46,
+        type: 3}
+      count: 2
+      rate: 1
+    - enemy: {fileID: 6442220969751332713, guid: 4f7e614657b5f384192cab7920f677d7,
+        type: 3}
+      count: 2
+      rate: 1
+  - individualWaves:
+    - enemy: {fileID: 6442220969751332713, guid: 637da97949293cc4ca009b2e962eae46,
+        type: 3}
+      count: 2
+      rate: 1
+    - enemy: {fileID: 6442220969751332713, guid: 4f7e614657b5f384192cab7920f677d7,
+        type: 3}
+      count: 2
+      rate: 1
+    - enemy: {fileID: 6442220969751332713, guid: e1afa2b6abc9d2746bd0763cabd22468,
+        type: 3}
+      count: 5
+      rate: 1
   spawnPoint: {fileID: 598042479}
   waveCountDownText: {fileID: 1605517500}
   gameManager: {fileID: 1582708795}
