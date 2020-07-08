@@ -282,9 +282,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d1a0c833c3fa84eac2ac598fb3d341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 7
+  startSpeed: 8
   starthealth: 300
-  value: 100
+  value: 50
+  damage: 2
   deathEffect: {fileID: 6638358025774627577, guid: 5caa64acefbdf8f4fad9bf00fd637aae,
     type: 3}
   healthBar: {fileID: 318280008309147688}
@@ -303,7 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363577985744823488220ff404c37db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBaby: 0
 --- !u!1 &6918517707915059756
 GameObject:
   m_ObjectHideFlags: 0

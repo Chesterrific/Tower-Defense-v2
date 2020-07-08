@@ -284,12 +284,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 10
   starthealth: 100
-  value: 50
+  value: 25
+  damage: 1
   deathEffect: {fileID: 6638358025774627577, guid: 70f263cdb219bcb40a2ec2d718c1c563,
     type: 3}
-  baby: {fileID: 0}
-  spawnBaby: 0
   healthBar: {fileID: 318280008309147688}
+  spawnEnemy: 0
+  baby: {fileID: 0}
   speed: 10
 --- !u!114 &-6535890968220816692
 MonoBehaviour:

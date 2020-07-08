@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
   public float startSpeed = 10f;
   public float starthealth;
   public int value = 50;
+  public int damage = 1;
   public GameObject deathEffect;
   public Image healthBar;
 

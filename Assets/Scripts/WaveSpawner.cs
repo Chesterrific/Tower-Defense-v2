@@ -26,7 +26,7 @@ public class WaveSpawner : MonoBehaviour
     {
       return;
     }
-    if (waveIndex == waves.Length)
+    if (waveIndex == waves.Length && PlayerStats.Lives > 0)
     {
       Debug.Log("Level complete");
       gameManager.WinLevel();
