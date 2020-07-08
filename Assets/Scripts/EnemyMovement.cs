@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
 
   void Start()
   {
-    target = Waypoints.points[0];
+    target = Waypoints.points[wavepointIndex];
 
     if (enemyStats == null)
     {
@@ -56,5 +56,26 @@ public class EnemyMovement : MonoBehaviour
     WaveSpawner.EnemiesAlive--;
     Destroy(gameObject);
     return;
+  }
+  // Setters
+  public void SetWavePointIndex(int wPI)
+  {
+    wavepointIndex = wPI;
+  }
+
+  public void SetTarget(Transform t)
+  {
+    target = t;
+  }
+
+  // Getters
+  public int GetWavePointIndex()
+  {
+    return wavepointIndex;
+  }
+
+  public Transform GetTarget()
+  {
+    return target;
   }
 }

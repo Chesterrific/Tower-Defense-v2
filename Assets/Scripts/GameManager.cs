@@ -39,11 +39,13 @@ public class GameManager : MonoBehaviour
   {
     GameEnded = true;
     gameOverUI.SetActive(true);
+    GetComponent<PauseMenu>().enabled = false;
   }
 
   public void WinLevel()
   {
     GameEnded = true;
     completeLevelUI.SetActive(true);
+    GetComponent<PauseMenu>().enabled = false;
   }
 }

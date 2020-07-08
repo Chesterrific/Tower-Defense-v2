@@ -10,15 +10,22 @@ public class Enemy : MonoBehaviour
   public int value = 50;
   public GameObject deathEffect;
   public Image healthBar;
-  
+
+  [Header("Baby Charactersitics")]
+  public bool spawnEnemy = false;
+  public GameObject baby;
+
   [HideInInspector]
   public float speed;
   private float health;
   private bool isDead = false;
+  private EnemyMovement currentMove;
 
-  private void Start() {
+  private void Start()
+  {
     health = starthealth;
     speed = startSpeed;
+    currentMove = GetComponent<EnemyMovement>();
   }
 
   public void TakeDamage(float damage)
@@ -27,7 +34,8 @@ public class Enemy : MonoBehaviour
 
     healthBar.fillAmount = health / starthealth;
 
-    if (health <= 0 && !isDead){
+    if (health <= 0 && !isDead)
+    {
       Die();
     }
   }
@@ -37,14 +45,30 @@ public class Enemy : MonoBehaviour
     speed = startSpeed * (1f - slowAmount);
   }
 
-  void Die(){
+  void Die()
+  {
     isDead = true;
     PlayerStats.Money += value;
 
     GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
     Destroy(effect, 5f);
 
+    if (spawnEnemy)
+    {
+      SpawnBaby();
+    }
+
     WaveSpawner.EnemiesAlive--;
     Destroy(gameObject);
+  }
+
+  void SpawnBaby()
+  {
+    GameObject newEnemy = (GameObject)Instantiate(baby, transform.position, Quaternion.identity);
+    EnemyMovement newEnemyMovement = newEnemy.GetComponent<EnemyMovement>();
+
+    newEnemyMovement.SetTarget(currentMove.GetTarget());
+    newEnemyMovement.SetWavePointIndex(currentMove.GetWavePointIndex());
+    WaveSpawner.EnemiesAlive++;
   }
 }

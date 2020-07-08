@@ -60,8 +60,6 @@ public class Node : MonoBehaviour
     {
       rend.material.color = alarmColor;
     }
-    //We grab this object's renderer component "Mesh Renderer" to grab its material to change here.
-
   }
   void OnMouseExit()
   {
