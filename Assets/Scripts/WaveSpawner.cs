@@ -14,6 +14,7 @@ public class WaveSpawner : MonoBehaviour
   public float countdown = 10f;
 
   private int waveIndex = 0;
+  private bool moneyGiven = true;
 
   private void Start()
   {
@@ -32,6 +33,11 @@ public class WaveSpawner : MonoBehaviour
       gameManager.WinLevel();
       this.enabled = false;
     }
+    if (!moneyGiven)
+    {
+      PlayerStats.Money += waves[waveIndex-1].waveWorth;
+      moneyGiven = true;
+    }
     if (countdown <= 0f)
     {
       //Coroutines are called using this command.
@@ -39,6 +45,8 @@ public class WaveSpawner : MonoBehaviour
       countdown = timeBetweenWaves;
       return;
     }
+
+
     //Time.deltatime is the time since drawing the last frame, i.e. 1 second if game runs at 60fps.
     countdown -= Time.deltaTime;
 
@@ -51,14 +59,17 @@ public class WaveSpawner : MonoBehaviour
   IEnumerator SpawnWave()
   {
     PlayerStats.Rounds++;
+    moneyGiven = false;
 
     Wave[] currentWave = waves[waveIndex].individualWaves;
 
-    for(int i = 0; i < currentWave.Length; i++){
-      for(int j = 0; j < currentWave[i].count; j++){
+    for (int i = 0; i < currentWave.Length; i++)
+    {
+      for (int j = 0; j < currentWave[i].count; j++)
+      {
         SpawnEnemy(currentWave[i].enemy);
 
-        yield return new WaitForSeconds(1f/ currentWave[i].rate);
+        yield return new WaitForSeconds(1f / currentWave[i].rate);
       }
     }
     waveIndex++;

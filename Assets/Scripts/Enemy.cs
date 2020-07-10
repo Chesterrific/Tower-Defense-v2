@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
   public float startSpeed = 10f;
   public float starthealth;
-  public int value = 50;
+  // public int value = 50;
   public int damage = 1;
   public GameObject deathEffect;
   public Image healthBar;
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
   void Die()
   {
     isDead = true;
-    PlayerStats.Money += value;
+    // PlayerStats.Money += value;
 
     GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
     Destroy(effect, 5f);
