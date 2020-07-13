@@ -13,12 +13,15 @@ public class WaveSpawner : MonoBehaviour
   public float timeBetweenWaves = 20f;
   public float countdown = 10f;
 
+  public Text roundCounterUI;
+
   private int waveIndex = 0;
   private bool moneyGiven = true;
 
   private void Start()
   {
     EnemiesAlive = 0;
+    roundCounterUI.text = PlayerStats.Rounds + "\n---\n" + waves.Length;
   }
 
   private void Update()
@@ -33,9 +36,13 @@ public class WaveSpawner : MonoBehaviour
       gameManager.WinLevel();
       this.enabled = false;
     }
+    if (GameManager.GameEnded)
+    {
+      this.enabled = false;
+    }
     if (!moneyGiven)
     {
-      PlayerStats.Money += waves[waveIndex-1].waveWorth;
+      PlayerStats.Money += waves[waveIndex - 1].waveWorth;
       moneyGiven = true;
     }
     if (countdown <= 0f)
@@ -60,6 +67,7 @@ public class WaveSpawner : MonoBehaviour
   {
     PlayerStats.Rounds++;
     moneyGiven = false;
+    roundCounterUI.text = PlayerStats.Rounds + "\n---\n" + waves.Length;
 
     Wave[] currentWave = waves[waveIndex].individualWaves;
 
